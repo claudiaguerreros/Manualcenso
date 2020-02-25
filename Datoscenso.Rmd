@@ -1,0 +1,102 @@
+---
+title: "Datos del Censo"
+author: ""
+date: "21 de febrero 2020"
+output:
+  pdf_document:
+    fig_cap: yes
+    fig_height: 6
+    fig_width: 5
+    highlight: pygments
+    keep_tex: yes
+    toc: yes
+  html_document:
+    toc: yes
+  word_document: default
+---
+\newpage
+
+``
+```{r setup1, include=FALSE}
+
+library(knitr,quietly=T)
+library(methods)
+options(replace.assign=FALSE, width=80)
+opts_chunk$set(fig.path='knitr_figure/graphics-', 
+               cache.path='knitr_cache/graphics-', 
+               dev='pdf', fig.width=8, fig.height=8, 
+               fig.show='hold', cache=FALSE, par=TRUE,
+               echo = TRUE, results = 'asis')
+knit_hooks$set(crop=hook_pdfcrop)
+knit_hooks$set(par=function(before, options, envir){
+    if (before && options$fig.show!='none') {
+        par(mar=c(3,3,2,1),cex.lab=.95,cex.axis=.9,
+            mgp=c(2,.7,0),tcl=-.01, las=1)
+}}, crop=hook_pdfcrop)
+    
+```
+## Importación de datos cartográficos
+```{r setup2,include=FALSE, echo = FALSE, message = FALSE, warning=FALSE}
+#x <- c("dplyr", "tidyr","leaflet","leaflet.extras","rgdal","albersusa","htmlTable","purrr","ggplot2","googleVis","ggvis","plotly","scales","tidyverse#3,"knitr","kableExtra", "sp","rgdal","rgeos","raster","adehabitatHR","maptools","spatstat","ggplot2","GISTools","tmap","tmaptools","classInt","spdep"#,"sf","scales","purrr","ggmap","spbabel")
+
+#devtools::install_github("haozhu233/kableExtra")
+#lapply(x, library, character.only = TRUE) # carga los paquetes requeridos
+
+
+
+
+```
+
+
+- **Marco Geoestadístico
+
+El Marco Geoestadístico es un sistema único y de carácter nacional diseñado por el INEGI, el cual presenta la división del territorio nacional en diferentes niveles de desagregación para referir geográficamente la información estadística de los censos y encuestas institucionales y de las Unidades del Estado, que se integra al Sistema Nacional de Información Estadística y Geográfica (SNIEG).
+
+<https://www.inegi.org.mx/temas/mg/default.html#Descargas>
+
+Contenido
+
+<https://claudiaguerreros.github.io/Manual/contenido.pdf>
+
+Se descarga y se descomprime localmente
+Se crea una carpeta para los datos geográficos
+
+```{r echo = FALSE, message = FALSE, warning=FALSE}
+#DATOS DEL MAPA
+#https://www.inegi.org.mx/temas/mg/default.html#Descargas
+#Marco Geoestadístico 2010 versión 4.3 (Censo de Población y Vivienda 2010)
+#http://internet.contenidos.inegi.org.mx/contenidos/Productos/prod_serv/contenidos/espanol/bvinegi/productos/geografia/marcogeo/889463776079_s.zip
+#3.1 GB
+#889463776079_s.zip
+rutam<-"C:/Users/claudia.guerrero/Dropbox/Investigacion y escritos/Manual/datos/mg_sep2019_integrado/conjunto_de_datos"
+#rutam<-"C:/Users/cguer/Dropbox/Investigacion y escritos/Manual/datos/mg_sep2019_integrado/conjunto_de_datos"
+basemapan <- readOGR(rutam,"00ent", use_iconv = TRUE, encoding = "latin1")
+nomfile<-"codentfederativa"
+edoyenlace<- read.csv(paste0(ruta,"/",nomfile,".csv"),header=TRUE, sep=",",encoding="latin1",colClasses=("CVE_ENT"="character"))
+entidades <- c('Aguascalientes', "Baja California","Baja California Sur","Campeche","Coahuila de Zaragoza","Colima","Chiapas","Chihuahua","Ciudad de Mexico","Durango","Guanajuato","Guerrero","Hidalgo","Jalisco","Estado de Mexico","Michoacan de Ocampo","Morelos","Nayarit","Nuevo Leon","Oaxaca","Puebla","Queretaro","Quintana Roo","San Luis Potosi","Sinaloa","Sonora","Tabasco","Tamaulipas","Tlaxcala","Veracruz de Ignacio de la Llave","Yucatan","Zacatecas")
+```
+\pagebreak 
+
+- **Municipio
+
+```{r echo = FALSE, message = FALSE, warning=FALSE}
+
+```
+\pagebreak 
+
+- **AGEB
+
+```{r echo = FALSE, message = FALSE, warning=FALSE}
+
+
+
+```
+## Importación de datos censales
+```{r echo = FALSE, message = FALSE, warning=FALSE}
+
+#DATOS DEL MAPA
+#https://www.inegi.org.mx/temas/mg/default.html#Descargas
+#Marco Geoestadístico 2010 versión 4.3 (Censo de Población y Vivienda 2010)
+
+```
+
